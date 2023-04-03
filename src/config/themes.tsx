@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 
 type DarkModeProps = 'dark' | 'light';
 
-const colors = {
+export const colorToken = {
   white: '#fcfcfc',
   grey: {
     100: '#e0e0e0',
@@ -59,35 +59,37 @@ export const themeSettings = (mode: DarkModeProps) => {
         ? {
             // palette values for dark mode
             primary: {
-              main: colors.teal[500]
+              main: colorToken.teal[500]
             },
             secondary: {
-              main: colors.orange[900]
+              main: colorToken.orange[900]
             },
             background: {
-              default: colors.navyBlue[800],
-              paper: colors.navyBlue[700]
+              // default: colorToken.navyBlue[800],
+              // paper: colorToken.navyBlue[700]
+              default: colorToken.grey[900],
+              paper: colorToken.grey[800]
             },
             text: {
-              primary: colors.white,
-              secondary: colors.grey[700]
+              primary: colorToken.white,
+              secondary: colorToken.white
             }
           }
         : {
             // palette values for light mode
             primary: {
-              main: colors.orange[900]
+              main: colorToken.orange[900]
             },
             secondary: {
-              main: colors.teal[500]
+              main: colorToken.teal[500]
             },
             background: {
-              default: colors.white,
-              paper: colors.grey[100]
+              default: colorToken.white,
+              paper: colorToken.grey[100]
             },
             text: {
-              primary: colors.grey[700],
-              secondary: colors.grey[700]
+              primary: colorToken.grey[900],
+              secondary: colorToken.white
             }
           })
     },
@@ -133,7 +135,7 @@ export const ColorModeContext = createContext({
 });
 
 export const useMode = () => {
-  const [mode, setMode] = useState<DarkModeProps>('dark');
+  const [mode, setMode] = useState<DarkModeProps>('light');
 
   const colorMode = useMemo(
     () => ({
