@@ -16,12 +16,12 @@ function App({ Component, pageProps }: AppProps) {
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <div className="app">
-            <main className="content">
-              <TopBar />
-              <Component {...pageProps} />
-            </main>
-          </div>
+          {/* <div className="app"> */}
+          <main className="content">
+            <TopBar />
+            <Component {...pageProps} />
+          </main>
+          {/* </div> */}
         </ThemeProvider>
       </ColorModeContext.Provider>
     </>
