@@ -43,7 +43,7 @@ const TopBar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="static">
       <Toolbar
         sx={{
           display: 'flex',
@@ -57,7 +57,7 @@ const TopBar = () => {
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Typography
             variant={isMobile ? 'h5' : 'h4'}
-            fontFamily="Sigmar One"
+            fontFamily="Alkatra"
             color={colors.text.primary}
           >
             Inkwell

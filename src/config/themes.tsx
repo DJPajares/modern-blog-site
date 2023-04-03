@@ -65,10 +65,10 @@ export const themeSettings = (mode: DarkModeProps) => {
               main: colorToken.orange[900]
             },
             background: {
-              // default: colorToken.navyBlue[800],
-              // paper: colorToken.navyBlue[700]
-              default: colorToken.grey[900],
-              paper: colorToken.grey[800]
+              default: colorToken.navyBlue[800],
+              paper: colorToken.navyBlue[700]
+              // default: colorToken.grey[900],
+              // paper: colorToken.grey[800]
             },
             text: {
               primary: colorToken.white,
@@ -94,37 +94,38 @@ export const themeSettings = (mode: DarkModeProps) => {
           })
     },
     typography: {
-      fontFamily: 'Source Sans Pro, sans-serif',
+      fontFamily: 'Ubuntu, sans-serif',
       h1: {
         fontWeight: 700,
-        fontSize: 40,
-        lineHeight: 1.2
+        fontSize: 60
       },
       h2: {
         fontWeight: 700,
-        fontSize: 32,
-        lineHeight: 1.2
+        fontSize: 50
       },
       h3: {
         fontWeight: 700,
-        fontSize: 24,
-        lineHeight: 1.2
-        // letterSpacing: '0em'
+        fontSize: 24
       },
       h4: {
         fontWeight: 700,
-        fontSize: 20,
-        lineHeight: 1.2
+        fontSize: 20
       },
       h5: {
         fontWeight: 700,
-        fontSize: 16,
-        lineHeight: 1.2
+        fontSize: 16
       },
       h6: {
         fontWeight: 700,
-        fontSize: 14,
-        lineHeight: 1.2
+        fontSize: 14
+      },
+      subtitle1: {
+        fontWeight: 400,
+        fontSize: 12
+      },
+      subtitle2: {
+        fontWeight: 400,
+        fontSize: 10
       }
     }
   };
