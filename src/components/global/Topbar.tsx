@@ -58,7 +58,7 @@ const TopBar = () => {
           <Typography
             variant={isMobile ? 'h5' : 'h4'}
             fontFamily="Alkatra"
-            color={colors.text.primary}
+            color={colors.primary.main}
           >
             Inkwell
           </Typography>

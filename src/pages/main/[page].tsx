@@ -1,6 +1,6 @@
 import { Avatar, Box, Typography } from '@mui/material';
 import Head from 'next/head';
-// import Image from 'next/image';
+import Image from 'mui-image';
 import { useRouter } from 'next/router';
 
 const Article = () => {
@@ -38,10 +38,14 @@ const Article = () => {
             src={parsedData.authorImage}
             sx={{ width: 24, height: 24, mr: 1 }}
           />
-          <Typography variant="subtitle1">{parsedData.author}</Typography>
+          <Typography variant="subtitle1" fontWeight={500}>
+            {parsedData.author}
+          </Typography>
         </Box>
 
-        <Typography variant="subtitle1">{parsedData.category}</Typography>
+        <Typography variant="subtitle1" fontWeight={500}>
+          {parsedData.category}
+        </Typography>
       </Box>
     );
   };
@@ -49,17 +53,11 @@ const Article = () => {
   const ContentImage = () => {
     return (
       <Box pt={1} pb={2}>
-        {/* <Image
-          loader={() => parsedData.contentImage}
-          alt={parsedData.category}
-          src={parsedData.contentImage}
-          width={800}
-          height={500}
-        /> */}
-        <img
+        <Image
           src={parsedData.contentImage}
           alt={parsedData.category}
           width="100%"
+          duration={1500}
         />
       </Box>
     );
