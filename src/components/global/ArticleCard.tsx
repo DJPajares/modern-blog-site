@@ -1,38 +1,29 @@
-import {
-  Avatar,
-  Box,
-  Card,
-  Paper,
-  Typography,
-  alpha,
-  useTheme
-} from '@mui/material';
+import { Avatar, Box, Card, Typography, alpha, useTheme } from '@mui/material';
 import { colorToken } from '@/config/themes';
+import { useRouter } from 'next/router';
 
 type ArticleCardProps = {
-  contentImage: string;
+  data: {
+    id: number;
+    page: string;
+    contentImage: string;
+    category: string;
+    title: string;
+    author: string;
+    authorImage: string;
+  };
   height?: number | string;
-  category: string;
-  title: string;
-  author?: string;
-  authorImage?: string;
 };
 
-const ArticleCard = ({
-  contentImage,
-  height = '100%',
-  category,
-  title,
-  author,
-  authorImage
-}: ArticleCardProps) => {
+const ArticleCard = ({ data, height = '100%' }: ArticleCardProps) => {
+  const router = useRouter();
   const theme = useTheme();
   const colors = theme.palette;
 
   const Category = () => {
     return (
       <Box>
-        <Typography variant="subtitle1">{category}</Typography>
+        <Typography variant="subtitle1">{data.category}</Typography>
       </Box>
     );
   };
@@ -41,7 +32,7 @@ const ArticleCard = ({
     return (
       <Box>
         <Typography variant="h2" fontWeight={500}>
-          {title}
+          {data.title}
         </Typography>
       </Box>
     );
@@ -62,9 +53,9 @@ const ArticleCard = ({
             alignItems: 'center'
           }}
         >
-          <Avatar src={authorImage} sx={{ width: 24, height: 24 }} />
+          <Avatar src={data.authorImage} sx={{ width: 24, height: 24 }} />
           <Typography variant="caption" px={1}>
-            {author}
+            {data.author}
           </Typography>
         </Box>
       </Box>
@@ -77,7 +68,7 @@ const ArticleCard = ({
       sx={{
         height,
         p: 2,
-        backgroundImage: `url(${contentImage})`,
+        backgroundImage: `url(${data.contentImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         borderRadius: 8,
@@ -86,6 +77,12 @@ const ArticleCard = ({
         justifyContent: 'flex-end',
         color: colors.text.secondary
       }}
+      onClick={() =>
+        router.push({
+          pathname: `/main/${data.page}`,
+          query: { data: JSON.stringify(data) }
+        })
+      }
     >
       <Category />
       <Title />

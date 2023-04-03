@@ -105,11 +105,11 @@ export const themeSettings = (mode: DarkModeProps) => {
       },
       h3: {
         fontWeight: 700,
-        fontSize: 24
+        fontSize: 40
       },
       h4: {
         fontWeight: 700,
-        fontSize: 20
+        fontSize: 24
       },
       h5: {
         fontWeight: 700,

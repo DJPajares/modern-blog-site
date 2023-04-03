@@ -1,30 +1,29 @@
 import { Avatar, Box, Card, Typography, alpha, useTheme } from '@mui/material';
 import { colorToken } from '@/config/themes';
+import { useRouter } from 'next/router';
 
-type ArticleCardProps = {
-  contentImage: string;
+type ArticleCardSmallProps = {
+  data: {
+    id: number;
+    page: string;
+    contentImage: string;
+    category: string;
+    title: string;
+    author: string;
+    authorImage: string;
+  };
   height?: number | string;
-  category: string;
-  title: string;
-  author?: string;
-  authorImage?: string;
 };
 
-const ArticleCardSmall = ({
-  contentImage,
-  height = '100%',
-  category,
-  title,
-  author,
-  authorImage
-}: ArticleCardProps) => {
+const ArticleCardSmall = ({ data, height = '100%' }: ArticleCardSmallProps) => {
+  const router = useRouter();
   const theme = useTheme();
   const colors = theme.palette;
 
   const Category = () => {
     return (
       <Box>
-        <Typography variant="subtitle2">{category}</Typography>
+        <Typography variant="subtitle2">{data.category}</Typography>
       </Box>
     );
   };
@@ -32,8 +31,8 @@ const ArticleCardSmall = ({
   const Title = () => {
     return (
       <Box>
-        <Typography variant="h3" fontWeight={500}>
-          {title}
+        <Typography variant="h4" fontWeight={500}>
+          {data.title}
         </Typography>
       </Box>
     );
@@ -54,9 +53,9 @@ const ArticleCardSmall = ({
             alignItems: 'center'
           }}
         >
-          <Avatar src={authorImage} sx={{ width: 24, height: 24 }} />
+          <Avatar src={data.authorImage} sx={{ width: 24, height: 24 }} />
           <Typography variant="caption" px={1}>
-            {author}
+            {data.author}
           </Typography>
         </Box>
       </Box>
@@ -69,7 +68,7 @@ const ArticleCardSmall = ({
       sx={{
         height,
         p: 2,
-        backgroundImage: `url(${contentImage})`,
+        backgroundImage: `url(${data.contentImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         borderRadius: 8,
@@ -78,6 +77,12 @@ const ArticleCardSmall = ({
         justifyContent: 'flex-end',
         color: colors.text.secondary
       }}
+      onClick={() =>
+        router.push({
+          pathname: `/main/${data.page}`,
+          query: { data: JSON.stringify(data) }
+        })
+      }
     >
       <Category />
       <Title />

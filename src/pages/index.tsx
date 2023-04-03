@@ -4,6 +4,7 @@ import CardImage from '@/components/global/CardImage';
 import ArticleCard from '@/components/global/ArticleCard';
 import ArticleCardSmall from '@/components/global/ArticleCardSmall';
 import { mockArticles } from '@/data/mockData';
+import { useRouter } from 'next/router';
 
 const img1 =
   'https://images.pexels.com/photos/1766604/pexels-photo-1766604.jpeg';
@@ -15,6 +16,7 @@ const img4 =
   'https://images.pexels.com/photos/5490235/pexels-photo-5490235.jpeg';
 
 export default function Home() {
+  const router = useRouter();
   const theme = useTheme();
   const colors = theme.palette;
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -64,11 +66,12 @@ export default function Home() {
             <Grid item xs={8}>
               <ArticleCard
                 height={516}
-                contentImage={mockArticles[0].contentImage}
-                category={mockArticles[0].category}
-                title={mockArticles[0].title}
-                author={mockArticles[0].author}
-                authorImage={mockArticles[0].authorImage}
+                data={mockArticles[0]}
+                // contentImage={mockArticles[0].contentImage}
+                // category={mockArticles[0].category}
+                // title={mockArticles[0].title}
+                // author={mockArticles[0].author}
+                // authorImage={mockArticles[0].authorImage}
               />
             </Grid>
             <Grid item xs={4}>
@@ -76,21 +79,23 @@ export default function Home() {
                 <Grid item xs={6}>
                   <ArticleCardSmall
                     height={250}
-                    contentImage={mockArticles[3].contentImage}
-                    category={mockArticles[3].category}
-                    title={mockArticles[3].title}
-                    author={mockArticles[3].author}
-                    authorImage={mockArticles[3].authorImage}
+                    data={mockArticles[2]}
+                    // contentImage={mockArticles[3].contentImage}
+                    // category={mockArticles[3].category}
+                    // title={mockArticles[3].title}
+                    // author={mockArticles[3].author}
+                    // authorImage={mockArticles[3].authorImage}
                   />
                 </Grid>
                 <Grid item xs={6}>
                   <ArticleCardSmall
                     height={250}
-                    contentImage={mockArticles[2].contentImage}
-                    category={mockArticles[2].category}
-                    title={mockArticles[2].title}
-                    author={mockArticles[2].author}
-                    authorImage={mockArticles[2].authorImage}
+                    data={mockArticles[3]}
+                    // contentImage={mockArticles[2].contentImage}
+                    // category={mockArticles[2].category}
+                    // title={mockArticles[2].title}
+                    // author={mockArticles[2].author}
+                    // authorImage={mockArticles[2].authorImage}
                   />
                 </Grid>
               </Grid>
