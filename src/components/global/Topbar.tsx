@@ -5,8 +5,10 @@ import {
   IconButton,
   InputBase,
   Toolbar,
+  Typography,
   alpha,
   styled,
+  useMediaQuery,
   useTheme
 } from '@mui/material';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
@@ -38,39 +40,54 @@ const TopBar = () => {
   const theme = useTheme();
   const colors = theme.palette;
   const colorMode = useContext(ColorModeContext);
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <AppBar position="sticky" elevation={0}>
+    <AppBar position="sticky">
       <Toolbar
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           backgroundColor: colors.background.default,
+          // backgroundColor: colors.background.paper,
           px: 2
         }}
         disableGutters
       >
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            borderRadius: 0.5,
-            backgroundColor: colors.background.paper,
-            '&:hover': {
-              backgroundColor: alpha(colors.background.paper, 0.5)
-            }
-          }}
-        >
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-          />
-          <IconButton>
-            <SearchIcon />
-          </IconButton>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography
+            variant={isMobile ? 'h5' : 'h4'}
+            fontFamily="Sigmar One"
+            color={colors.text.primary}
+          >
+            Inkwell
+          </Typography>
         </Box>
 
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              borderRadius: 0.5,
+              backgroundColor: colors.background.paper,
+              // backgroundColor: colors.background.default,
+              '&:hover': {
+                backgroundColor: alpha(colors.background.paper, 0.5)
+                // backgroundColor: alpha(colors.background.default, 0.5)
+              },
+              mx: 2
+            }}
+          >
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+            <IconButton>
+              <SearchIcon />
+            </IconButton>
+          </Box>
+
           <IconButton onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === 'dark' ? (
               <LightModeOutlinedIcon />
@@ -78,12 +95,12 @@ const TopBar = () => {
               <DarkModeOutlinedIcon />
             )}
           </IconButton>
-          <IconButton>
+          {/* <IconButton>
             <NotificationsOutlinedIcon />
           </IconButton>
           <IconButton>
             <SettingsOutlinedIcon />
-          </IconButton>
+          </IconButton> */}
           <IconButton>
             <PersonOutlinedIcon />
           </IconButton>
