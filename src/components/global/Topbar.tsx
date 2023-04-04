@@ -83,25 +83,28 @@ const TopBar = () => {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-            <IconButton>
+            <IconButton aria-label="search button">
               <SearchIcon />
             </IconButton>
           </Box>
 
-          <IconButton onClick={colorMode.toggleColorMode}>
+          <IconButton
+            onClick={colorMode.toggleColorMode}
+            aria-label="dark and light mode button"
+          >
             {theme.palette.mode === 'dark' ? (
               <LightModeOutlinedIcon />
             ) : (
               <DarkModeOutlinedIcon />
             )}
           </IconButton>
-          {/* <IconButton>
+          {/* <IconButton aria-label='notifications button'>
             <NotificationsOutlinedIcon />
           </IconButton>
-          <IconButton>
+          <IconButton aria-label='settings button'>
             <SettingsOutlinedIcon />
           </IconButton> */}
-          <IconButton>
+          <IconButton aria-label="profile button">
             <PersonOutlinedIcon />
           </IconButton>
         </Box>
