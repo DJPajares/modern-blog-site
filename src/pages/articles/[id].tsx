@@ -1,18 +1,19 @@
-import { Avatar, Box, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Head from 'next/head';
 import Image from 'mui-image';
 import { useRouter } from 'next/router';
+import Avatar from '@/components/global/Avatar';
+import { mockArticles } from '@/data/mockData';
 
 const Article = () => {
   const router = useRouter();
-  const { data } = router.query;
-
-  const parsedData = JSON.parse(data as string);
+  const id = parseInt(router.query.id as any as string, 10);
+  const data = mockArticles.find((x) => x.id == id) || mockArticles[0];
 
   const Title = () => {
     return (
       <Box py={2}>
-        <Typography variant="h3">{parsedData.title}</Typography>
+        <Typography variant="h3">{data.title}</Typography>
       </Box>
     );
   };
@@ -24,7 +25,8 @@ const Article = () => {
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+          pt: 2
         }}
       >
         <Box
@@ -34,17 +36,14 @@ const Article = () => {
             alignItems: 'center'
           }}
         >
-          <Avatar
-            src={parsedData.authorImage}
-            sx={{ width: 24, height: 24, mr: 1 }}
-          />
-          <Typography variant="subtitle1" fontWeight={500}>
-            {parsedData.author}
+          <Avatar src={data.authorImage} alt="author" width={24} />
+          <Typography variant="subtitle1" fontWeight={500} ml={1}>
+            {data.author}
           </Typography>
         </Box>
 
         <Typography variant="subtitle1" fontWeight={500}>
-          {parsedData.category}
+          {data.category}
         </Typography>
       </Box>
     );
@@ -52,10 +51,10 @@ const Article = () => {
 
   const ContentImage = () => {
     return (
-      <Box pt={1} pb={2}>
+      <Box pt={1}>
         <Image
-          src={parsedData.contentImage}
-          alt={parsedData.category}
+          src={data.contentImage}
+          alt={data.category}
           width="100%"
           duration={1500}
         />
@@ -63,11 +62,19 @@ const Article = () => {
     );
   };
 
+  const Date = () => {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', py: 1 }}>
+        <Typography variant="subtitle2">{`Date published: ${data.date}`}</Typography>
+      </Box>
+    );
+  };
+
   const Content = () => {
     return (
-      <Box py={2}>
+      <Box pt={8}>
         <Typography variant="body1" style={{ whiteSpace: 'pre-line' }}>
-          {parsedData.content}
+          {data.content}
         </Typography>
       </Box>
     );
@@ -76,7 +83,8 @@ const Article = () => {
   return (
     <>
       <Head>
-        <title>{parsedData.category}</title>
+        <title>{`Article - ${data.category}`}</title>
+        <meta name={data.category} content={data.title} />
       </Head>
 
       <Box
@@ -94,6 +102,8 @@ const Article = () => {
           <Subtitle />
 
           <ContentImage />
+
+          <Date />
 
           <Content />
         </Box>
