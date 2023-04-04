@@ -83,8 +83,11 @@ const Article = () => {
   return (
     <>
       <Head>
-        <title>{`Article - ${data.category}`}</title>
-        <meta name={data.category} content={data.title} />
+        <title>{`Article: ${data.category} - ${data.title}`}</title>
+        <meta
+          name="description"
+          content={`${data.category} article titled ${data.title}`}
+        />
       </Head>
 
       <Box
