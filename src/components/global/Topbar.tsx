@@ -14,9 +14,12 @@ import {
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import { useContext } from 'react';
 import Link from 'next/link';
+import Avatar from './Avatar';
+
+const userImage =
+  'https://media.gq.com/photos/5caf9c876328030f7944ecc1/1:1/w_3603,h_3603,c_limit/keanu-reeves-gq-cover-may-2019-social.jpg';
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -71,10 +74,8 @@ const TopBar = () => {
               alignItems: 'center',
               borderRadius: 0.5,
               backgroundColor: colors.background.paper,
-              // backgroundColor: colors.background.default,
               '&:hover': {
                 backgroundColor: alpha(colors.background.paper, 0.5)
-                // backgroundColor: alpha(colors.background.default, 0.5)
               },
               mx: 2
             }}
@@ -99,7 +100,7 @@ const TopBar = () => {
             )}
           </IconButton>
           <IconButton aria-label="profile button">
-            <PersonOutlinedIcon />
+            <Avatar src={userImage} alt="avatar" width={24} />
           </IconButton>
         </Box>
       </Toolbar>
