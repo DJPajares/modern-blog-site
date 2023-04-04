@@ -1,11 +1,13 @@
-import { Avatar, Box, Card, Typography, alpha, useTheme } from '@mui/material';
+import { Box, Card, Typography, alpha, useTheme } from '@mui/material';
 import { colorToken } from '@/config/themes';
 import { useRouter } from 'next/router';
+import Avatar from './Avatar';
 
 type ArticleCardSmallProps = {
   data: {
     id: number;
     page: string;
+    date: string;
     contentImage: string;
     category: string;
     title: string;
@@ -53,7 +55,7 @@ const ArticleCardSmall = ({ data, height = '100%' }: ArticleCardSmallProps) => {
             alignItems: 'center'
           }}
         >
-          <Avatar src={data.authorImage} sx={{ width: 24, height: 24 }} />
+          <Avatar src={data.authorImage} alt="author" width={24} />
           <Typography variant="caption" px={1}>
             {data.author}
           </Typography>
@@ -75,12 +77,16 @@ const ArticleCardSmall = ({ data, height = '100%' }: ArticleCardSmallProps) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        color: colors.text.secondary
+        color: colors.text.secondary,
+        cursor: 'pointer'
       }}
       onClick={() =>
-        router.push({
-          pathname: `/main/${data.page}`,
-          query: { data: JSON.stringify(data) }
+        // router.push({
+        //   pathname: `/main/article`,
+        //   query: { data: JSON.stringify(data) }
+        // })
+        router.push(`/main/article?data=${JSON.stringify(data)}`, undefined, {
+          shallow: true
         })
       }
     >
