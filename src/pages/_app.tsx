@@ -10,9 +10,9 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Template App</title>
-      </Head>
+      </Head> */}
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
