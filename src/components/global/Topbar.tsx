@@ -14,8 +14,6 @@ import {
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import { useContext } from 'react';
 import Link from 'next/link';
@@ -100,12 +98,6 @@ const TopBar = () => {
               <DarkModeOutlinedIcon />
             )}
           </IconButton>
-          {/* <IconButton aria-label='notifications button'>
-            <NotificationsOutlinedIcon />
-          </IconButton>
-          <IconButton aria-label='settings button'>
-            <SettingsOutlinedIcon />
-          </IconButton> */}
           <IconButton aria-label="profile button">
             <PersonOutlinedIcon />
           </IconButton>

@@ -88,17 +88,7 @@ const ArticleCard = ({
         color: colors.text.secondary,
         cursor: 'pointer'
       }}
-      onClick={() =>
-        // router.push(
-        //   `/main/article?data=${JSON.stringify(data)}`,
-        //   '/main/article',
-        //   {
-        //     shallow: true
-        //   }
-        // )
-        // router.push(`/main/article?id=${id}`)
-        router.push(`/articles/${id}`)
-      }
+      onClick={() => router.push(`/articles/${id}`)}
     >
       <Category />
       <Title />

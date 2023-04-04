@@ -94,7 +94,7 @@ export const themeSettings = (mode: DarkModeProps) => {
           })
     },
     typography: {
-      fontFamily: 'Ubuntu, sans-serif',
+      fontFamily: 'Oswald, sans-serif',
       h1: {
         fontWeight: 700,
         fontSize: 60

@@ -72,7 +72,7 @@ const Article = () => {
 
   const Content = () => {
     return (
-      <Box pt={8}>
+      <Box py={8}>
         <Typography variant="body1" style={{ whiteSpace: 'pre-line' }}>
           {data.content}
         </Typography>
