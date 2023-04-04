@@ -18,6 +18,7 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import { useContext } from 'react';
+import Link from 'next/link';
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -49,19 +50,20 @@ const TopBar = () => {
           display: 'flex',
           justifyContent: 'space-between',
           backgroundColor: colors.background.default,
-          // backgroundColor: colors.background.paper,
           px: 2
         }}
         disableGutters
       >
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography
-            variant={isMobile ? 'h5' : 'h4'}
-            fontFamily="Alkatra"
-            color={colors.primary.main}
-          >
-            Inkwell
-          </Typography>
+          <Link href="/" style={{ textDecoration: 'none' }}>
+            <Typography
+              variant={isMobile ? 'h5' : 'h4'}
+              fontFamily="Alkatra"
+              color={colors.primary.main}
+            >
+              Inkwell
+            </Typography>
+          </Link>
         </Box>
 
         <Box sx={{ display: 'flex', alignItems: 'center' }}>

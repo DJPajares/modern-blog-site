@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
-import CardImage from '@/components/global/CardImage';
 import ArticleCard from '@/components/global/ArticleCard';
-import ArticleCardSmall from '@/components/global/ArticleCardSmall';
 import { mockArticles } from '@/data/mockData';
 import { useRouter } from 'next/router';
 
