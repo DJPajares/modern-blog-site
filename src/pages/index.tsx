@@ -48,7 +48,7 @@ export default function Home() {
                 title={mockArticles[0].title}
                 author={mockArticles[0].author}
                 authorImage={mockArticles[0].authorImage}
-                height={516}
+                height={476}
               />
             </Grid>
             <Grid item xs={4}>
@@ -61,7 +61,7 @@ export default function Home() {
                     title={mockArticles[2].title}
                     author={mockArticles[2].author}
                     authorImage={mockArticles[2].authorImage}
-                    height={250}
+                    height={230}
                     isSmall
                   />
                 </Grid>
@@ -73,7 +73,7 @@ export default function Home() {
                     title={mockArticles[3].title}
                     author={mockArticles[3].author}
                     authorImage={mockArticles[3].authorImage}
-                    height={250}
+                    height={230}
                     isSmall
                   />
                 </Grid>
