@@ -45,7 +45,7 @@ const TopBar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar
         sx={{
           display: 'flex',
