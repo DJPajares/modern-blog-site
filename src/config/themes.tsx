@@ -109,7 +109,8 @@ export const themeSettings = (mode: DarkModeProps) => {
       },
       h4: {
         fontWeight: 700,
-        fontSize: 24
+        fontSize: 24,
+        lineHeight: 1.2
       },
       h5: {
         fontWeight: 700,
@@ -117,7 +118,8 @@ export const themeSettings = (mode: DarkModeProps) => {
       },
       h6: {
         fontWeight: 700,
-        fontSize: 14
+        fontSize: 14,
+        lineHeight: 1.1
       },
       subtitle1: {
         fontWeight: 400,

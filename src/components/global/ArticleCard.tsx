@@ -1,4 +1,11 @@
-import { Box, Card, Typography, alpha, useTheme } from '@mui/material';
+import {
+  Box,
+  Card,
+  Typography,
+  alpha,
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
 import { colorToken } from '@/config/themes';
 import { useRouter } from 'next/router';
 import Avatar from './Avatar';
@@ -27,13 +34,28 @@ const ArticleCard = ({
   const router = useRouter();
   const theme = useTheme();
   const colors = theme.palette;
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const textCategory = () => {
+    if (isMobile) {
+      return isSmall ? 'subtitle2' : 'subtitle1';
+    } else {
+      return isSmall ? 'body2' : 'body1';
+    }
+  };
+
+  const textTitle = () => {
+    if (isMobile) {
+      return isSmall ? 'h6' : 'h4';
+    } else {
+      return isSmall ? 'h4' : 'h2';
+    }
+  };
 
   const Category = () => {
     return (
       <Box>
-        <Typography variant={isSmall ? 'subtitle2' : 'subtitle1'}>
-          {category}
-        </Typography>
+        <Typography variant={textCategory()}>{category}</Typography>
       </Box>
     );
   };
@@ -41,7 +63,7 @@ const ArticleCard = ({
   const Title = () => {
     return (
       <Box>
-        <Typography variant={isSmall ? 'h4' : 'h2'} fontWeight={500}>
+        <Typography variant={textTitle()} fontWeight={500}>
           {title}
         </Typography>
       </Box>
@@ -81,7 +103,7 @@ const ArticleCard = ({
         backgroundImage: `url(${contentImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        borderRadius: 8,
+        borderRadius: 2,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',

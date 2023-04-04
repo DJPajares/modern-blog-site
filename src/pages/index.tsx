@@ -29,11 +29,11 @@ export default function Home() {
           m: isMobile ? 2 : 10,
           p: 2,
           backgroundColor: colors.background.default,
-          borderRadius: 8
+          borderRadius: 2
         }}
       >
         <Box sx={{ pb: 2, display: 'flex', justifyContent: 'center' }}>
-          <Typography variant="h1" fontWeight={400}>
+          <Typography variant={isMobile ? 'h3' : 'h1'} fontWeight={400}>
             Articles
           </Typography>
         </Box>

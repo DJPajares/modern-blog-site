@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Head from 'next/head';
 import Image from 'mui-image';
 import { useRouter } from 'next/router';
@@ -9,6 +9,9 @@ const Article = () => {
   const router = useRouter();
   const id = parseInt(router.query.id as any as string, 10);
   const data = mockArticles.find((x) => x.id == id) || mockArticles[0];
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const Title = () => {
     return (
@@ -96,10 +99,10 @@ const Article = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          my: 10
+          my: isMobile ? 2 : 10
         }}
       >
-        <Box sx={{ width: '50%' }}>
+        <Box sx={{ width: isMobile ? '80%' : '50%' }}>
           <Title />
 
           <Subtitle />
