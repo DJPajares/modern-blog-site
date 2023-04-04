@@ -3,6 +3,7 @@ import {
   Card,
   Typography,
   alpha,
+  styled,
   useMediaQuery,
   useTheme
 } from '@mui/material';
@@ -35,6 +36,19 @@ const ArticleCard = ({
   const theme = useTheme();
   const colors = theme.palette;
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const StyledCard = styled(Card)(() => ({
+    height,
+    backgroundImage: `url(${contentImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    cursor: 'pointer',
+    transition: 'transform 0.3s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.02)',
+      cursor: 'pointer'
+    }
+  }));
 
   const textCategory = () => {
     if (isMobile) {
@@ -95,27 +109,22 @@ const ArticleCard = ({
   };
 
   return (
-    <Card
-      raised
+    <StyledCard
       sx={{
-        height,
         p: 2,
-        backgroundImage: `url(${contentImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         borderRadius: 2,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        color: colors.text.secondary,
-        cursor: 'pointer'
+        color: colors.text.secondary
       }}
       onClick={() => router.push(`/articles/${id}`)}
+      raised
     >
       <Category />
       <Title />
       {!isSmall && <Author />}
-    </Card>
+    </StyledCard>
   );
 };
 
