@@ -67,8 +67,15 @@ export default function Home() {
           <Grid container spacing={2}>
             <Grid item xs={8}>
               <ArticleCard
+                id={mockArticles[0].id}
+                contentImage={mockArticles[0].contentImage}
+                category={mockArticles[0].category}
+                title={mockArticles[0].title}
+                author={mockArticles[0].author}
+                authorImage={mockArticles[0].authorImage}
                 height={516}
-                data={mockArticles[0]}
+
+                // data={mockArticles[0]}
                 // contentImage={mockArticles[0].contentImage}
                 // category={mockArticles[0].category}
                 // title={mockArticles[0].title}
@@ -79,9 +86,16 @@ export default function Home() {
             <Grid item xs={4}>
               <Grid container spacing={2} direction="column">
                 <Grid item xs={6}>
-                  <ArticleCardSmall
+                  <ArticleCard
+                    id={mockArticles[2].id}
+                    contentImage={mockArticles[2].contentImage}
+                    category={mockArticles[2].category}
+                    title={mockArticles[2].title}
+                    author={mockArticles[2].author}
+                    authorImage={mockArticles[2].authorImage}
                     height={250}
-                    data={mockArticles[2]}
+                    isSmall
+                    // data={mockArticles[2]}
                     // contentImage={mockArticles[3].contentImage}
                     // category={mockArticles[3].category}
                     // title={mockArticles[3].title}
@@ -90,9 +104,15 @@ export default function Home() {
                   />
                 </Grid>
                 <Grid item xs={6}>
-                  <ArticleCardSmall
+                  <ArticleCard
+                    id={mockArticles[3].id}
+                    contentImage={mockArticles[3].contentImage}
+                    category={mockArticles[3].category}
+                    title={mockArticles[3].title}
+                    author={mockArticles[3].author}
+                    authorImage={mockArticles[3].authorImage}
                     height={250}
-                    data={mockArticles[3]}
+                    isSmall
                     // contentImage={mockArticles[2].contentImage}
                     // category={mockArticles[2].category}
                     // title={mockArticles[2].title}

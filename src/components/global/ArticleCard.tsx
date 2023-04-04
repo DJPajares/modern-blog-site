@@ -4,20 +4,26 @@ import { useRouter } from 'next/router';
 import Avatar from './Avatar';
 
 type ArticleCardProps = {
-  data: {
-    id: number;
-    page: string;
-    date: string;
-    contentImage: string;
-    category: string;
-    title: string;
-    author: string;
-    authorImage: string;
-  };
+  id: number;
+  contentImage: string;
+  category: string;
+  title: string;
+  author: string;
+  authorImage: string;
+  isSmall?: boolean;
   height?: number | string;
 };
 
-const ArticleCard = ({ data, height = '100%' }: ArticleCardProps) => {
+const ArticleCard = ({
+  id,
+  contentImage,
+  category,
+  title,
+  author,
+  authorImage,
+  isSmall = false,
+  height = '100%'
+}: ArticleCardProps) => {
   const router = useRouter();
   const theme = useTheme();
   const colors = theme.palette;
@@ -25,7 +31,9 @@ const ArticleCard = ({ data, height = '100%' }: ArticleCardProps) => {
   const Category = () => {
     return (
       <Box>
-        <Typography variant="subtitle1">{data.category}</Typography>
+        <Typography variant={isSmall ? 'subtitle2' : 'subtitle1'}>
+          {category}
+        </Typography>
       </Box>
     );
   };
@@ -33,8 +41,8 @@ const ArticleCard = ({ data, height = '100%' }: ArticleCardProps) => {
   const Title = () => {
     return (
       <Box>
-        <Typography variant="h2" fontWeight={500}>
-          {data.title}
+        <Typography variant={isSmall ? 'h4' : 'h2'} fontWeight={500}>
+          {title}
         </Typography>
       </Box>
     );
@@ -55,9 +63,9 @@ const ArticleCard = ({ data, height = '100%' }: ArticleCardProps) => {
             alignItems: 'center'
           }}
         >
-          <Avatar src={data.authorImage} alt="author" width={24} />
+          <Avatar src={authorImage} alt="author" width={24} />
           <Typography variant="caption" px={1}>
-            {data.author}
+            {author}
           </Typography>
         </Box>
       </Box>
@@ -70,7 +78,7 @@ const ArticleCard = ({ data, height = '100%' }: ArticleCardProps) => {
       sx={{
         height,
         p: 2,
-        backgroundImage: `url(${data.contentImage})`,
+        backgroundImage: `url(${contentImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         borderRadius: 8,
@@ -81,18 +89,20 @@ const ArticleCard = ({ data, height = '100%' }: ArticleCardProps) => {
         cursor: 'pointer'
       }}
       onClick={() =>
-        // router.push({
-        //   pathname: `/main/article`,
-        //   query: { data: JSON.stringify(data) }
-        // })
-        router.push(`/main/article?data=${JSON.stringify(data)}`, undefined, {
-          shallow: true
-        })
+        // router.push(
+        //   `/main/article?data=${JSON.stringify(data)}`,
+        //   '/main/article',
+        //   {
+        //     shallow: true
+        //   }
+        // )
+        // router.push(`/main/article?id=${id}`)
+        router.push(`/articles/${id}`)
       }
     >
       <Category />
       <Title />
-      <Author />
+      {!isSmall && <Author />}
     </Card>
   );
 };
